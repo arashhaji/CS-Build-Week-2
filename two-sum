@@ -1,0 +1,20 @@
+'''
+Understanding:
+- we are given an array of integers 
+- we have to return two numbers so they add up to a specific target 
+- we cannot use the same element twice
+
+Planning:
+- we loop through each element of the array
+- find if there is another value that equals to target 
+
+'''
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        numList = {}
+        for i in range(len(nums)):
+            if target - nums[i] in numList:
+                return [numList[target - nums[i]],i]
+            else:
+                numList[nums[i]]=i
