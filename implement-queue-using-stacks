@@ -1,0 +1,63 @@
+'''
+Understand: 
+-instantiate our Class object
+-add data to it
+-pop the first element off the Queue and return it to a variable
+-peek to get the first element without removal
+-get a Boolean (True/False) if the Queue is empty or not
+
+Planning:
+-Instantiation is the Queue’s storage object that will be used.
+-push(val) is the way to add data to the Queue.
+-pop() is the way to remove and return the front element in the Queue.
+-peek() is the way to return the front element without removing it.
+-empty() is the way to tell if a Queue is empty and contains any values.
+'''
+
+class MyQueue:
+    
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.stack = []
+
+    def push(self, x: int) -> None:
+        """
+        Push element x to the back of queue.
+        """
+        self.stack.append(x)
+
+    def pop(self) -> int:
+        """
+        Removes the element from in front of queue and returns that element.
+        """
+        if len(self.stack) > 0:
+            return self.stack.pop(0)
+        else:
+            return None
+
+    def peek(self) -> int:
+        """
+        Get the front element.
+        """
+        if len(self.stack):
+            return self.stack[0]
+        else: 
+            return None
+
+    def empty(self) -> bool:
+        """
+        Returns whether the queue is empty.
+        """
+        if len(self.stack) > 0:
+            return False
+        else:
+            return True
+
+# Your MyQueue object will be instantiated and called as such:
+# obj = MyQueue()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.peek()
+# param_4 = obj.empty()
