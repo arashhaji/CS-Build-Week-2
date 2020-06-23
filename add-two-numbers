@@ -1,0 +1,53 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+'''
+Understand :
+-two linked lists that have nodes in them
+-values are positive integers
+-digits are stored in reverse order / right or left 
+-each node contains a single digit
+-add the two numbers and return it as a linked list
+-each list is going to be a total value when put together going left to right 
+
+Objective: add each list together and input the value into nodes in the same order and input
+
+Planning:
+-need to get the values out of the linked list
+-put them in the correct order
+-add them together
+-reverse the order of numbers
+-input the values into a linked list 
+
+'''
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        
+      #  l1 = []
+      #  l2 = []
+        
+       
+        returning = current = ListNode(0)
+        
+        carry = 0 
+        
+        while l1 or l2:
+            v1 = v2 = 0
+            
+            if l1:
+                v1 = l1.val
+                l1 = l1.next
+                
+            if l2:
+                v2 = l2.val
+                l2 = l2.next
+                
+            total = v1 + v2 + carry
+            carry = total // 10
+            val = total % 10
+            current.next = ListNode(val)
+            current = current.next
+            
+        return returning.next
