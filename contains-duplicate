@@ -1,0 +1,29 @@
+'''
+Understand:
+-Input going to be an array of numbers
+-find if the array has duplicate numbers
+-return True if a value appears more than once in the array 
+-return False if it is unique
+
+Objective:  Return True or False depending on if the array contains at least one duplicate pair.
+
+Planning:
+-create set
+-iterate over list
+-if it is not in the set. assign the value to the set 
+-return false
+
+'''
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        num_set = set()
+        
+        for i in range(len(nums)):
+            
+            if nums[i] in num_set:
+                return True
+            else:
+                num_set.add(nums[i])
+                
+        return False
