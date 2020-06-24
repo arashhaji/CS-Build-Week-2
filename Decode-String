@@ -1,0 +1,46 @@
+'''
+Understanding:
+- we are given an encoded string
+- we must return its decoded string
+-variable k is a positive integer that determinds repeat
+-[letters] is a string to be repeated 
+
+Planning:
+-create integer stack and letter stack
+-create a final string variable
+-iterate over the string
+-if value of string is equal to a number
+    -append it to the integer stack
+-elif if value is equal to [or]
+-pop to bracket stack
+-elif append it to the letter stack 
+'''
+
+
+class Solution:
+    def decodeString(self, s: str) -> str:
+            #Initialize data structure
+            #Is isdigit() a string containing only numbers
+            #Is isalpha() a letter-only string
+            #recursion
+        
+        stack = []
+        result = ''
+        num = 0
+        
+        for c in s:
+            if c.isdigit():
+                num = num * 10 + int(c)
+            elif c.isalpha():
+                result += c
+            elif c == '[':
+                #Tuple form stacking
+                stack.append((result, num))
+                #Refresh strings and number of repetitions
+                result, num = '', 0
+            else:
+                #If c==']', pop-up strings and number of repetitions
+                last_str, this_num = stack.pop()
+                result = last_str + this_num * result
+        
+        return result
