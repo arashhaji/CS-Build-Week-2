@@ -1,0 +1,44 @@
+'''
+Understanding:
+-merge two sorted linked lists
+-new list will be made by splicing
+-splice nodes of first two list
+-return a one sorted list of all the values of the linked list 
+
+planning:
+- compare l1 and l2 
+-merge the remainders
+- build l3 node
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        
+        l3_head = ListNode(0)
+        l3_current = l3_head
+        
+        #assert both exist
+        while l1 and l2:
+            if l2.val < l1.val:
+                
+                #build l3's node
+                l3_current.next = l2
+                l2 = l2.next
+            
+            else:
+                l3_current.next = l1
+                l1 = l1.next
+            
+            #find next node to build 
+            l3_current = l3_current.next 
+        
+        if l1:
+            l3_current.next = l1
+        if l2:
+            l3_current.next = l2
+                
+        return l3_head.next 
