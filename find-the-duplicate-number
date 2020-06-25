@@ -1,0 +1,33 @@
+'''
+Understanding:
+
+- must not modify the array
+- must use only constant, 0(1) extra space.
+- runtime complexity should be less than O(n2)
+- there is only one duplicate number in the array, but it could be repeated more than once 
+
+Planning:
+- our input consits of an array where each number is between 1 and n.
+- if n = 1, then that means we can have the folowing input [1,1]
+- if n = 2, then that means we can have the following input:
+[1,2,2],[1,1,2][1,1,1],[2,2,2]
+- if n = 3,then that means our array will never contain a number that is greater than the size of the array itself. 
+
+'''
+
+
+
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        i = 0
+        temp = -1
+        
+        while nums[i] !=i:
+            temp = nums[nums[i]]
+            nums[nums[i]] = nums[i]
+            
+            if i != 0:
+                nums[i] = i
+            i = temp
+            
+        return i 
